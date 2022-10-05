@@ -38,3 +38,49 @@ It is also notable that with balanced data, the confidence intervals are smaller
 I originally calculated the confidence intervals for Krippendorf's alpha using [kripp.boot](https://github.com/MikeGruz/kripp.boot). However the size of the confidence intervals did not appear to decline as the sample size increased. I found this surprising although I am not sure if it is expected behaviour so raised this as a [github issue](https://github.com/MikeGruz/kripp.boot/issues/1).
 
 This script calculates alpha using `kripp.boot` and the [`krippendorffsalpha`](https://github.com/drjphughesjr/krippendorffsalpha) package. In the second case the confidence interval declines as the sample size increases. I discuss this more [here]("./blob/main/kripp_alpha_vs_kripp_boot.md")
+
+## Meaning of the phrase "error rate"
+
+I have used the phrase "error rate" to refer to the proportion of true positives and true negatives that are misclassified. For example, with a balanced dataset of 100 perfectly classified samples, the confusion matrix would be:
+
+|  | **_Rater 2_** |  |  |  |
+|---|---|---|---|---|
+| **_Rater 1_** | Class | 0 | 1 |  |
+|  | 0 | 50 | 0 |  |
+|  | 1 | 0 | 50 |  |
+
+
+If we set the error rate at 0.2, the confusion matrix would be:
+
+|  | **_Rater 2_** |  |  |  |
+|---|---|---|---|---|
+| **_Rater 1_** | Class | 0 | 1 |  |
+|  | 0 | 40 | 10 |  |
+|  | 1 | 10 | 40 |  |
+
+This would lead to Krippendorf's alpha and Cohen's Kappa of about 0.6.
+
+## Reproducing this project
+
+Clone the project by running in a terminal:
+
+```bash
+git clone https://github.com/samrickman/krippendorf-alpha-cohen-kappa-simulation
+```
+
+Once you have done this, in R you will need the [`renv`](https://rstudio.github.io/renv/articles/renv.html) package to ensure you have the same package versions. The first time you run the project you will need to open an R terminal in this directory and run:
+
+```r
+renv::restore()
+```
+
+You should then be able to run any of the simulations by running the relevant R scripts. These files are:
+
+1. Comparison of Krippendorf's alpha confidence intervals calculated by [kripp.boot](https://github.com/MikeGruz/kripp.boot) and [`krippendorffsalpha`](https://github.com/drjphughesjr/krippendorffsalpha) packages. Simulation holds class balance constant at 0.5 and error rate constant at 0.2 and changes the number of samples.
+2. Comparison of Krippendorf's alpha confidence intervals calculated by [kripp.boot](https://github.com/MikeGruz/kripp.boot) and [`krippendorffsalpha`](https://github.com/drjphughesjr/krippendorffsalpha) packages. Simulation holds class balance constant at 0.9 and error rate constant at 0.2 and changes the number of samples.
+3. Comparison of Krippendorf's alpha confidence intervals calculated by [kripp.boot](https://github.com/MikeGruz/kripp.boot) and [`krippendorffsalpha`](https://github.com/drjphughesjr/krippendorffsalpha) packages. Simulation holds class balance constant at 0.5 and number of samples at 300 and changes the error rate.
+4. Comparison of Krippendorf's alpha and Cohen's kappa. Simulation holds class balance constant at 0.5 and number of samples at 300 and changes the error rate.
+5. Comparison of Krippendorf's alpha and Cohen's kappa. Simulation holds class balance constant at 0.9 and number of samples at 300 and changes the error rate.
+6. Comparison of Krippendorf's alpha and Cohen's kappa. Simulation holds class balance constant at 0.5 and number of samples at 300 and changes the error rate.
+7. Comparison of Krippendorf's alpha and Cohen's kappa. Simulation holds class balance constant at 0.9 and number of samples at 300 and changes the error rate.
+8. Comparison of Krippendorf's alpha and Cohen's kappa. Simulation holds error rate constant at 0.2 and number of samples at 300 and changes the class balance.
