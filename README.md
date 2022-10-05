@@ -60,6 +60,22 @@ If we set the error rate at 0.2, the confusion matrix would be:
 
 This would lead to Krippendorf's alpha and Cohen's Kappa of about 0.6.
 
+Conversely in an imbalanced dataset with perfect agreement:
+
+|  | **_Rater 2_** |  |  |  |
+|---|---|---|---|---|
+| **_Rater 1_** | Class | 0 | 1 |  |
+|  | 0 | 80 | 0 |  |
+|  | 1 | 0 | 20 |  |
+
+Applying a 0.2 error rate would lead to:
+
+|  | **_Rater 2_** |  |  |  |
+|---|---|---|---|---|
+| **_Rater 1_** | Class | 0 | 1 |  |
+|  | 0 | 64 | 16 |  |
+|  | 1 | 4 | 16 |  |
+
 ## Reproducing this project
 
 Clone the project by running in a terminal:
