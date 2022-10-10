@@ -37,7 +37,7 @@ It is also notable that with balanced data, the confidence intervals are smaller
 
 I originally calculated the confidence intervals for Krippendorf's alpha using [kripp.boot](https://github.com/MikeGruz/kripp.boot). However the size of the confidence intervals did not appear to decline as the sample size increased. I found this surprising although I am not sure if it is expected behaviour so raised this as a [github issue](https://github.com/MikeGruz/kripp.boot/issues/1).
 
-This script calculates alpha using [kripp.boot](https://github.com/MikeGruz/kripp.boot) and the [`krippendorffsalpha`](https://github.com/drjphughesjr/krippendorffsalpha) package. In the second case the confidence interval declines as the sample size increases. I discuss this more [here](./kripp_alpha_vs_kripp_boot.md). Apart from when comparing the packages, the estimates in this repo use the `krippendorfsalpha` package rather than `kripp.boot`, as the confidence interval should be sensitive to the sample size.
+This script calculates alpha using [`kripp.boot`](https://github.com/MikeGruz/kripp.boot) and the [`krippendorffsalpha`](https://github.com/drjphughesjr/krippendorffsalpha) package. In the second case the confidence interval declines as the sample size increases. I discuss this more [here](./kripp_alpha_vs_kripp_boot.md). Apart from when comparing the packages, the estimates in this repo use the `krippendorfsalpha` package rather than `kripp.boot`, as the confidence interval should be sensitive to the sample size.
 
 ## Meaning of the term "error rate"
 
